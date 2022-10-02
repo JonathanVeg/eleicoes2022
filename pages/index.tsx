@@ -10,10 +10,14 @@ interface ICandidate {
 }
 
 const Candidate: React.FC = ({ name, votes, percentage }: ICandidate) => {
+  const readableVotes = useMemo(() => {
+    return votes.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }, [votes]);
+
   return (
     <CandidateWrapper>
       <Column>{name}</Column>
-      <Column>{votes} votos</Column>
+      <Column>{readableVotes} votos</Column>
       <Column>{percentage}%</Column>
     </CandidateWrapper>
   );
@@ -60,7 +64,7 @@ const Home: React.FC = () => {
   }, [getAndParseData]);
 
   const usefulData = useMemo(() => {
-    return data.filter((it) => parseFloat(it.percentage) > 2);
+    return data.filter((it) => parseFloat(it.percentage) > 20);
   }, [data]);
 
   return (
