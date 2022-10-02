@@ -9,7 +9,7 @@ interface ICandidate {
   percentage: number;
 }
 
-const Candidate: React.FC = ({ name, votes, percentage }: ICandidate) => {
+const Candidate: React.FC<ICandidate> = ({ name, votes, percentage }: ICandidate) => {
   const readableVotes = useMemo(() => {
     return votes.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }, [votes]);
