@@ -44,7 +44,7 @@ const Home: React.FC = () => {
         id: index,
         name: nm,
         votes: vap,
-        percentage: pvap,
+        percentage: parseFloat(pvap),
       });
     });
 
@@ -64,7 +64,7 @@ const Home: React.FC = () => {
   }, [getAndParseData]);
 
   const usefulData = useMemo(() => {
-    return data.filter((it) => parseFloat(it.percentage) > 20);
+    return data.filter((it) => it.percentage > 20);
   }, [data]);
 
   return (
