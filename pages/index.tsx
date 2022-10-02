@@ -58,7 +58,7 @@ const Home: React.FC = () => {
 
     const interval = setInterval(() => {
       getAndParseData();
-    }, 60000);
+    }, 6000);
 
     return () => clearInterval(interval);
   }, [getAndParseData]);
