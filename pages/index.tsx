@@ -9,7 +9,7 @@ interface ICandidate {
   percentage: number;
 }
 
-const Candidate: React.FC<ICandidate> = ({ name, votes, percentage }: ICandidate) => {
+const Candidate: React.FC<ICandidate> = ({ id, name, votes, percentage }: ICandidate) => {
   const readableVotes = useMemo(() => {
     return votes.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }, [votes]);
@@ -76,6 +76,7 @@ const Home: React.FC = () => {
           {usefulData.map((candidate: ICandidate) => (
             <Candidate
               key={candidate.id}
+              id={candidate.id}
               name={candidate.name}
               votes={candidate.votes}
               percentage={candidate.percentage}
